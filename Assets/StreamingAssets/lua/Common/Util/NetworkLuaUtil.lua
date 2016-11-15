@@ -16,6 +16,14 @@ function NetworkLuaUtil.sendMessage(sid,func,...)
     networkMgr:SendMessage(buffer);
 end
 
+function NetworkLuaUtil.getData(_name,_sd)
+	logWarn("------------------->"..type(protobuf));
+	local data = _sd:ReadBuffer();
+  	local pData = protobuf.decode("com.ftkj.proto.".._name,data);
+  	return pData;
+end
+
+
 function NetworkLuaUtil.getMo(val)
     local temp = "";
     if val ~= nil and #val >=1 then 
@@ -27,7 +35,7 @@ function NetworkLuaUtil.getMo(val)
         msg = "";
     }
     mo.msg = temp;
-    log("获得Mo数据"..mo.msg);
+    log("获得Mo数据"..mo.msg..type(protobuf));
     local data = protobuf.encode("com.ftkj.proto.MoData",mo);
     log("测试打印-->"..tostring(data));
     return data;

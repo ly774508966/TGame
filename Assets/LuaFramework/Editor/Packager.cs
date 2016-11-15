@@ -74,6 +74,7 @@ public class Packager {
         if (AppConst.ExampleMode) {
             HandleExampleBundle();
         }
+        initPrefabMap();
         string resPath = "Assets/" + AppConst.AssetDir;
         BuildAssetBundleOptions options = BuildAssetBundleOptions.DeterministicAssetBundle | 
                                           BuildAssetBundleOptions.UncompressedAssetBundle;
@@ -83,6 +84,22 @@ public class Packager {
         string streamDir = Application.dataPath + "/" + AppConst.LuaTempDir;
         if (Directory.Exists(streamDir)) Directory.Delete(streamDir, true);
         AssetDatabase.Refresh();
+    }
+
+    static void initPrefabMap()
+    {
+        string prefabPath = AppDataPath + "/prefab/";
+        paths.Clear(); files.Clear();
+        Recursive(prefabPath);
+        foreach (string f in paths)
+        {
+            if (f.EndsWith(".meta")) continue;
+            string newName = f.Replace(prefabPath, "");
+            AddBuildMap(newName + AppConst.ExtName, "*.prefab", "Assets/prefab/"+ newName);
+        }
+        //AddBuildMap("main" + AppConst.ExtName, "*.prefab", "Assets/LuaFramework/prefab/Main");
+        //AddBuildMap("prompt" + AppConst.ExtName, "*.prefab", "Assets/LuaFramework/Examples/Builds/Prompt");
+        //paths.Clear(); files.Clear();
     }
 
     static void AddBuildMap(string bundleName, string pattern, string path) {
@@ -153,6 +170,8 @@ public class Packager {
                 File.Copy(f, destfile, true);
             }
         }
+        //----------------------------------------------------------------------------------
+       
         AssetDatabase.Refresh();
     }
 
@@ -163,11 +182,13 @@ public class Packager {
         string resPath = AppDataPath + "/" + AppConst.AssetDir + "/";
         if (!Directory.Exists(resPath)) Directory.CreateDirectory(resPath);
 
-        AddBuildMap("prompt" + AppConst.ExtName, "*.prefab", "Assets/LuaFramework/Examples/Builds/Prompt");
-        AddBuildMap("message" + AppConst.ExtName, "*.prefab", "Assets/LuaFramework/Examples/Builds/Message");
+        //AddBuildMap("prompt" + AppConst.ExtName, "*.prefab", "Assets/LuaFramework/Examples/Builds/Prompt");
+        //AddBuildMap("message" + AppConst.ExtName, "*.prefab", "Assets/LuaFramework/Examples/Builds/Message");
 
-        AddBuildMap("prompt_asset" + AppConst.ExtName, "*.png", "Assets/LuaFramework/Examples/Textures/Prompt");
-        AddBuildMap("shared_asset" + AppConst.ExtName, "*.png", "Assets/LuaFramework/Examples/Textures/Shared");
+
+        AddBuildMap("main" + AppConst.ExtName, "*.prefab", "Assets/prefab/mainModule");
+        //AddBuildMap("prompt_asset" + AppConst.ExtName, "*.png", "Assets/LuaFramework/Examples/Textures/Prompt");
+        //AddBuildMap("shared_asset" + AppConst.ExtName, "*.png", "Assets/LuaFramework/Examples/Textures/Shared");
     }
 
     /// <summary>

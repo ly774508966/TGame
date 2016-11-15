@@ -12,7 +12,7 @@ local print_r = require "3rd/sproto/print_r"
 
 require "Logic/LuaClass"
 require "Logic/CtrlManager"
-require "Logic/NetworkLuaUtil"
+require "Common/Util/NetworkLuaUtil"
 require "Common/functions"
 require "Controller/PromptCtrl"
 
@@ -36,15 +36,15 @@ end
 function Game.OnInitOK()
     AppConst.SocketPort = 8038;
     AppConst.SocketAddress = "192.168.12.92";
-    networkMgr:SendConnect();
-    NetworkLuaUtil.RegisterProtoPB("Default");
-    NetworkLuaUtil.RegisterProtoPB("Mo");
-    local on = function(sd)
-        logWarn("回调---------->"..type(sd));
-        local _default = NetworkLuaUtil.getData("DefaultData",sd);
-        logWarn("回调code---------->".._default.code);
-    end
-    NetworkLuaUtil.sendMessage(800005,on);
+    -- networkMgr:SendConnect();
+    -- NetworkLuaUtil.RegisterProtoPB("Default");
+    -- NetworkLuaUtil.RegisterProtoPB("Mo");
+    -- local on = function(sd)
+    --     logWarn("回调---------->"..type(sd));
+    --     local _default = NetworkLuaUtil.getData("DefaultData",sd);
+    --     logWarn("回调code---------->".._default.code);
+    -- end
+    -- NetworkLuaUtil.sendMessage(800005,on);
     -- NetworkLuaUtil:getpathes(Util.DataPath.."lua/3rd/pbc/");
     -- for k,v in ipairs(paths) do
     --     print("----->"..v);
@@ -62,8 +62,9 @@ function Game.OnInitOK()
     -- coroutine.start(this.test_coroutine);
 
     CtrlManager.Init();
-    local ctrl = CtrlManager.GetCtrl(CtrlNames.Prompt);
-    if ctrl ~= nil and AppConst.ExampleMode == 1 then
+    local ctrl = CtrlManager.GetCtrl(CtrlNames.Main);
+    -- if ctrl ~= nil and AppConst.ExampleMode == 1 then
+    if ctrl ~= nil then
         ctrl:Awake();
     end
        
