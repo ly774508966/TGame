@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 4232451113
+CRC: 1208971145
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -7,4 +7,7 @@ AssetBundleManifest:
       Dependencies: {}
     Info_1:
       Name: module.unity3d
+      Dependencies: {}
+    Info_2:
+      Name: room.unity3d
       Dependencies: {}

@@ -68,6 +68,10 @@ public static class LuaBinder
 		UnityEngine_BlendWeightsWrap.Register(L);
 		UnityEngine_RenderTextureWrap.Register(L);
 		UnityEngine_RectTransformWrap.Register(L);
+		L.BeginModule("EventSystems");
+		UnityEngine_EventSystems_EventSystemWrap.Register(L);
+		UnityEngine_EventSystems_UIBehaviourWrap.Register(L);
+		L.EndModule();
 		L.BeginModule("UI");
 		UnityEngine_UI_TextWrap.Register(L);
 		UnityEngine_UI_MaskableGraphicWrap.Register(L);
@@ -77,9 +81,6 @@ public static class LuaBinder
 		L.BeginModule("Director");
 		UnityEngine_Experimental_Director_DirectorPlayerWrap.Register(L);
 		L.EndModule();
-		L.EndModule();
-		L.BeginModule("EventSystems");
-		UnityEngine_EventSystems_UIBehaviourWrap.Register(L);
 		L.EndModule();
 		L.BeginModule("Events");
 		L.RegFunction("UnityAction", UnityEngine_Events_UnityAction);

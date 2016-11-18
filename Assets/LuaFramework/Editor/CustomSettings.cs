@@ -7,7 +7,7 @@ using LuaFramework;
 using BindType = ToLuaMenu.BindType;
 using UnityEngine.UI;
 using System.Reflection;
-
+using UnityEngine.EventSystems;
 public static class CustomSettings
 {
     public static string FrameworkPath = AppConst.FrameworkRoot;
@@ -108,8 +108,9 @@ public static class CustomSettings
         _GT(typeof(Input)),
         _GT(typeof(KeyCode)),
         _GT(typeof(SkinnedMeshRenderer)),
-        _GT(typeof(Space)),        
-                                           
+        _GT(typeof(Space)),
+        _GT(typeof(EventSystem)),
+
         _GT(typeof(MeshRenderer)),            
         _GT(typeof(ParticleEmitter)),
         _GT(typeof(ParticleRenderer)),

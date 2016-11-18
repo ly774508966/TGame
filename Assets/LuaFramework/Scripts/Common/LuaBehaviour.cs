@@ -40,6 +40,20 @@ namespace LuaFramework {
         }
 
         /// <summary>
+        /// 添加单击事件
+        /// </summary>
+        public void AddClickArgs(GameObject go, LuaFunction luafunc,LuaTable table)
+        {
+            if (go == null || luafunc == null) return;
+            buttons.Add(go.name, luafunc);
+            go.GetComponent<Button>().onClick.AddListener(
+                delegate () {
+                    luafunc.Call(go, table);
+                }
+            );
+        }
+
+        /// <summary>
         /// 删除单击事件
         /// </summary>
         /// <param name="go"></param>

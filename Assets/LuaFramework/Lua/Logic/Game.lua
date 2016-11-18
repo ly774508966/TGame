@@ -10,11 +10,13 @@ local sproto = require "3rd/sproto/sproto"
 local core = require "sproto.core"
 local print_r = require "3rd/sproto/print_r"
 
-require "Logic/LuaClass"
-require "Logic/CtrlManager"
-require "Common/Util/NetworkLuaUtil"
-require "Common/functions"
-require "Controller/PromptCtrl"
+
+require "Logic/ModuleClass";
+require "Logic/SingleClass";
+require "Logic/Class";
+require "Logic/CtrlManager";
+require "Common/functions";
+require "Controller/PromptCtrl";
 
 
 --管理器--
@@ -32,25 +34,37 @@ function Game.InitViewPanels()
 	end
 end
 
+function Game.InitUtils()
+    for i = 1, #UtilNames do
+        require ("Common/Util/"..tostring(UtilNames[i]))
+    end
+end
+
+
 --初始化完成，发送链接服务器信息--
 function Game.OnInitOK()
     AppConst.SocketPort = 8038;
     AppConst.SocketAddress = "192.168.12.92";
-    -- networkMgr:SendConnect();
+    networkMgr:SendConnect();
+        --注册LuaView--
+    this.InitViewPanels();
+    this.InitUtils();
+    NetworkLuaUtil.initProto();
     -- NetworkLuaUtil.RegisterProtoPB("Default");
     -- NetworkLuaUtil.RegisterProtoPB("Mo");
     -- local on = function(sd)
     --     logWarn("回调---------->"..type(sd));
     --     local _default = NetworkLuaUtil.getData("DefaultData",sd);
     --     logWarn("回调code---------->".._default.code);
+    -- end 
+    -- local da = "";
+    -- for i = 1,99,1 do
+    --     da= da.."asdfasdfasfjkhaiuhfjhfuiwheiufhwuifhuiahfuiqhwefiuqwheuifhasduifhjsakldfhlk";
     -- end
-    -- NetworkLuaUtil.sendMessage(800005,on);
-    -- NetworkLuaUtil:getpathes(Util.DataPath.."lua/3rd/pbc/");
+    -- NetworkLuaUtil.sendMessage(800005,on,da);
     -- for k,v in ipairs(paths) do
     --     print("----->"..v);
     -- end
-    --注册LuaView--
-    this.InitViewPanels();
 
 
     -- this.test_class_func();
@@ -62,12 +76,12 @@ function Game.OnInitOK()
     -- coroutine.start(this.test_coroutine);
 
     CtrlManager.Init();
-    local ctrl = CtrlManager.GetCtrl(CtrlNames.Main);
+    PanelUtil:OpenModule(CtrlNames.Main);
+    -- local ctrl = CtrlManager.GetCtrl(CtrlNames.Main);
     -- if ctrl ~= nil and AppConst.ExampleMode == 1 then
-    if ctrl ~= nil then
-        ctrl:Awake();
-    end
-       
+    -- if ctrl ~= nil then
+    --     ctrl:Awake();
+    -- end
     logWarn('LuaFramework InitOK--->>>');
 end
 

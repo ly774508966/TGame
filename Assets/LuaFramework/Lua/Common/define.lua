@@ -1,14 +1,27 @@
 
 CtrlNames = {
-	Prompt = "PromptCtrl",
-	Message = "MessageCtrl",
-	Main = "MainCtrl"
+	-- Prompt = "PromptCtrl",
+	-- Message = "MessageCtrl",
+	Main = "MainCtrl",
+	Room = "RoomCtrl"
 }
 
 PanelNames = {
-	"PromptPanel",	
-	"MessagePanel",
+	-- "PromptPanel",	
+	-- "MessagePanel",
 	"MainPanel",
+	"RoomPanel",
+}
+
+UtilNames = {
+	"NetworkLuaUtil",
+	"PanelUtil",
+	"UnityMonoUtil",
+}
+
+ModuleNames = {
+	Main = "Main",
+	Room = "Room"
 }
 
 --协议类型--
@@ -25,6 +38,8 @@ Util = LuaFramework.Util;
 AppConst = LuaFramework.AppConst;
 LuaHelper = LuaFramework.LuaHelper;
 ByteBuffer = LuaFramework.ByteBuffer;
+Input = UnityEngine.Input;
+EventSystem = UnityEngine.EventSystems.EventSystem;
 
 resMgr = LuaHelper.GetResManager();
 panelMgr = LuaHelper.GetPanelManager();

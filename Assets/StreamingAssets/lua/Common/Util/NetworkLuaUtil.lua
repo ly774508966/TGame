@@ -5,6 +5,13 @@ Event = require 'events'
 NetworkLuaUtil = {};
 local this = NetworkLuaUtil;
 this.rid = 0;
+
+function NetworkLuaUtil.initProto()
+    this.RegisterProtoPB("Default");
+    this.RegisterProtoPB("Mo");
+end
+
+
 function NetworkLuaUtil.sendMessage(sid,func,...)
 	local data = NetworkLuaUtil.getMo({...});
 	local rid = NetworkLuaUtil.getRid();
@@ -59,21 +66,21 @@ function NetworkLuaUtil.RegisterProtoPB(pName)
     protobuf.register(buffer)
 end
 
-function NetworkLuaUtil.getpathes(rootpath, pathes)
-	print("------------------------>jinlaile")
-    pathes = pathes or {}
-    for entry in lfs.dir(rootpath) do
-        if entry ~= '.' and entry ~= '..' then
-            local path = rootpath .. '\\' .. entry
-            local attr = lfs.attributes(path)
-            assert(type(attr) == 'table')
+-- function NetworkLuaUtil.getpathes(rootpath, pathes)
+-- 	print("------------------------>jinlaile")
+--     pathes = pathes or {}
+--     for entry in lfs.dir(rootpath) do
+--         if entry ~= '.' and entry ~= '..' then
+--             local path = rootpath .. '\\' .. entry
+--             local attr = lfs.attributes(path)
+--             assert(type(attr) == 'table')
             
-            if attr.mode == 'directory' then
-                getpathes(path, pathes)
-            else
-                table.insert(pathes, path)
-            end
-        end
-    end
-    return pathes
-end
+--             if attr.mode == 'directory' then
+--                 getpathes(path, pathes)
+--             else
+--                 table.insert(pathes, path)
+--             end
+--         end
+--     end
+--     return pathes
+-- end
