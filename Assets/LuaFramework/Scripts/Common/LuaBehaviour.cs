@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#define ASYNC_MODE
+using UnityEngine;
 using LuaInterface;
 using System.Collections;
 using System.Collections.Generic;

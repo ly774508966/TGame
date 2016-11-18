@@ -18,7 +18,7 @@ function MainCtrl.Awake()
 	logWarn("MainCtrl.Awake--->>");
 	PanelUtil:OpenPanel("Main",this.OnCreate,"tim",123);
 	UpdateBeat:Add(Update,this);
-	
+	this.curDestoryCount =0;
 end
 
 
@@ -40,7 +40,7 @@ end
 --启动事件--
 function MainCtrl.OnCreate(obj,arg)
 	gameObject = obj;
-    -- gameObject:SetActive(true);
+    gameObject:SetActive(true);
 	local lb = gameObject:GetComponent('LuaBehaviour');
 	local fun = function(go,args) 
 	logWarn("点击事件触发了~~~"..args[1]); 

@@ -10,9 +10,10 @@ end
 
 function PanelUtil:OpenModule(ctrlName,...)
 	 local ctrl = CtrlManager.GetCtrl(ctrlName);
-	 {...}.moduleName = ctrlName;
+	 local args = {...};
+	 args.moduleName = ctrlName;
     if ctrl ~= nil then
-        ctrl.Awake({...});
+        ctrl.Awake(args);
         logWarn("创建Ctrl---------------------------->"..ctrlName);
     end
 end

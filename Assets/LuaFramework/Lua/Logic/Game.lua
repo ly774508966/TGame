@@ -10,10 +10,9 @@ local sproto = require "3rd/sproto/sproto"
 local core = require "sproto.core"
 local print_r = require "3rd/sproto/print_r"
 
-
+require "Logic/Class";
 require "Logic/ModuleClass";
 require "Logic/SingleClass";
-require "Logic/Class";
 require "Logic/CtrlManager";
 require "Common/functions";
 require "Controller/PromptCtrl";

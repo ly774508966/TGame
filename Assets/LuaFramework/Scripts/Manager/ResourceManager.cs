@@ -1,4 +1,6 @@
-﻿#if ASYNC_MODE
+﻿#define ASYNC_MODE
+
+#if ASYNC_MODE
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
