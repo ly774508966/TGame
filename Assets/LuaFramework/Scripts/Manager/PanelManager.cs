@@ -26,7 +26,13 @@ namespace LuaFramework {
         public void CreatePanel(string name, LuaFunction func = null,LuaTable table = null) {
             string assetName = name + "Panel";
             string abName = name.ToLower() + AppConst.ExtName;
-            if (Parent.FindChild(assetName) != null) return;
+            Transform tf = Parent.FindChild(assetName);
+            if (tf != null && func != null)
+            {
+                func.Call(tf.gameObject);
+                return;
+            }
+
 
 #if ASYNC_MODE
             ResManager.LoadPrefab(abName, assetName, delegate(UnityEngine.Object[] objs) {

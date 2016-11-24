@@ -24,4 +24,5 @@ end
 --单击事件--
 function MainPanel.OnDestroy()
 	logWarn("OnDestroy---->>>");
+	CtrlManager.GetCtrl(CtrlNames.Main).Close();
 end

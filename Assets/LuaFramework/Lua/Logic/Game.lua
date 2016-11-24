@@ -13,8 +13,8 @@ local print_r = require "3rd/sproto/print_r"
 require "Logic/Class";
 require "Logic/ModuleClass";
 require "Logic/SingleClass";
-require "Logic/CtrlManager";
 require "Common/functions";
+require "Logic/CtrlManager";
 require "Controller/PromptCtrl";
 
 

@@ -16,13 +16,12 @@ end
 
 function MainCtrl.Awake()
 	logWarn("MainCtrl.Awake--->>");
-	PanelUtil:OpenPanel("Main",this.OnCreate,"tim",123);
-	UpdateBeat:Add(Update,this);
+	PanelUtil:OpenPanel("Main",this.OnCreate,true,false,"tim",123);
 	this.curDestoryCount =0;
 end
 
 
-function Update()
+function MainCtrl.Update()
 	if (Input.GetMouseButtonDown(0)) then
 			if (EventSystem.current:IsPointerOverGameObject()) then
 				local gb = EventSystem.current.currentSelectedGameObject;
@@ -40,14 +39,15 @@ end
 --启动事件--
 function MainCtrl.OnCreate(obj,arg)
 	gameObject = obj;
-    gameObject:SetActive(true);
 	local lb = gameObject:GetComponent('LuaBehaviour');
+	logWarn("创建传参------------------->>"..arg[1]);
 	local fun = function(go,args) 
-	logWarn("点击事件触发了~~~"..args[1]); 
-	PanelUtil:OpenModule(CtrlNames.Room,args[1]);
+		logWarn("点击事件触发了~~~"..args[1]); 
+		PanelUtil:OpenModule(CtrlNames.Room,args[1]);
 	end
 	UnityMonoUtil:AddOnClick(lb,MainPanel.btn_bh,fun,"aa");
 	UnityMonoUtil:AddOnClick(lb,MainPanel.btn_bhd,fun,"bb");
+	UpdateBeat:Add(this.Update,this);
 	logWarn("Start lua--->>"..gameObject.name);
 end
 
@@ -58,6 +58,7 @@ end
 
 --关闭事件--
 function MainCtrl.Close()
-	panelMgr:ClosePanel(CtrlNames.Main);
-	-- UpdateBeat:Remove(Update,this);
+	-- panelMgr:ClosePanel(CtrlNames.Main);
+	logWarn("-----------------------------------关闭Panel了！！！");
+	UpdateBeat:Remove(this.Update,this);
 end

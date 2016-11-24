@@ -10,3 +10,7 @@ function this:GetInstance()
     end
     return self.m_Instance;
 end
+
+function this:__new()
+	logWarn("----------------------------------------------------");
+end
