@@ -15,7 +15,7 @@ end
 
 --初始化面板--
 function RoomPanel.InitPanel()
-	
+	this.btn_callback = transform:FindChild("context/btn_callcak").gameObject;
 end
 
 --单击事件--

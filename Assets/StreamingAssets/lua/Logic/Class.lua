@@ -23,3 +23,18 @@ function Class:new(super)
 end  
   
 return Class
+
+-- local AA = Class:new();
+-- AA.b = "cc";
+-- function AA:cal(x,y)
+--   return self:aa();
+-- end
+-- local BB = Class:new(AA);
+-- BB.b="dd";
+-- function BB:aa()
+--   return 2;
+-- end
+
+-- print(AA:cal(2,1));
+-- print(BB:cal(5,2));
+-- print(AA:aa());

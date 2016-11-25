@@ -1,7 +1,7 @@
 -- require "Common/Util/UnityMonoUtil";
 -- require "Common/Util/PanelUtil";
 
-MainCtrl = Class:new(ModuleClass);
+MainCtrl = ModuleClass:new(nil);
 local this = MainCtrl;
 
 local message;
@@ -11,12 +11,13 @@ local gameObject;
 --构建函数--
 function MainCtrl.New()
 	logWarn("MainCtrl.New--->>");
+	this.name = CtrlNames.Main;
 	return this;
 end
 
 function MainCtrl.Awake()
 	logWarn("MainCtrl.Awake--->>");
-	PanelUtil:OpenPanel("Main",this.OnCreate,true,false,"tim",123);
+	PanelUtil:OpenPanel(this,"Main",this.OnCreate,false,false,"tim",123);
 	this.curDestoryCount =0;
 end
 
@@ -50,6 +51,11 @@ function MainCtrl.OnCreate(obj,arg)
 	UpdateBeat:Add(this.Update,this);
 	logWarn("Start lua--->>"..gameObject.name);
 end
+
+function MainCtrl.__Hide()
+	UpdateBeat:Remove(this.Update,this);
+end
+
 
 --单击事件--
 function MainCtrl.OnClick(go)

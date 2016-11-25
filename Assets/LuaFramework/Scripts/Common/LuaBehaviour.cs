@@ -46,6 +46,7 @@ namespace LuaFramework {
         public void AddClickArgs(GameObject go, LuaFunction luafunc,LuaTable table)
         {
             if (go == null || luafunc == null) return;
+            if (buttons.ContainsKey(go.name)) return;
             buttons.Add(go.name, luafunc);
             go.GetComponent<Button>().onClick.AddListener(
                 delegate () {

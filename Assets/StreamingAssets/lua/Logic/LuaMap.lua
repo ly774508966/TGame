@@ -1,12 +1,12 @@
 map = {}
 
 local this = map
-
+this.count = 0;
 function this:new()
     o = {}
     setmetatable(o,self)
     self.__index = self
-    self.count = 0
+    -- self.count = 0
     return o
 end
 
@@ -48,8 +48,14 @@ function this:clear()
     self.count = 0
 end
 
--- local characters = map:new()
-
+local aa = map:new();
+aa:insert("a","b");
+aa:insert("e","f");
+print(aa.count);
+local bb = map:new();
+bb:insert("c","d");
+print(bb.count);
+print(aa.count);
 -- characters:insert("name1"," this Name:123")
 -- characters:remove("name1")
 -- characters:insert("name2","this Name:2")

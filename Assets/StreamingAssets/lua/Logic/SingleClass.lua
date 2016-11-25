@@ -8,5 +8,9 @@ function this:GetInstance()
     if nil == self.m_Instance then
         self.m_Instance= self:new();
     end
-    return m_Instance;
+    return self.m_Instance;
+end
+
+function this:__new()
+	logWarn("----------------------------------------------------");
 end

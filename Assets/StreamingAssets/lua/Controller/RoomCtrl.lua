@@ -14,17 +14,18 @@ end
 function RoomCtrl.Awake()
 	logWarn("RoomCtrl.Awake--->>");
     local data = {name = "Tim"};
-	panelMgr:CreatePanel('Room', this.OnCreate,data);
+	PanelUtil:OpenPanel('Room', this.OnCreate,false,false,data);
+
 end
+
 
 --启动事件--
 function RoomCtrl.OnCreate(obj,source)
 	gameObject = obj;
     gameObject:SetActive(true);
 	message = gameObject:GetComponent('LuaBehaviour');
-
-
 	logWarn("Start lua--->>"..gameObject.name);
+	-- UpdateBeat:Add(this.Update,this);
 end
 
 --单击事件--
