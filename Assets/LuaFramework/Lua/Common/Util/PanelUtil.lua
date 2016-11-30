@@ -15,11 +15,11 @@ function PanelUtil:OpenPanel(ctrl,module,fun,close,forever,...)
 		end
 		local arg = {...};
 		local tempFun = function (go,...)
-			logWarn("回调了---------------------------->");
+			-- logWarn("回调了---------------------------->");
 			local index = self:GetCurIndex();
 			local oldIndex = self:FindPanelByName(module);
 			local newIndex = index+1;
-			logWarn(index.."="..newIndex.."找到的旧的下标---------------------------->"..(oldIndex or -1));
+			-- logWarn(index.."="..newIndex.."找到的旧的下标---------------------------->"..(oldIndex or -1));
 			local ogo = self.viewStack[index];
 			if(ogo and ogo.name~=module) then --上一层Panel不为空
 				if (ogo.close) then --立即销毁视图
@@ -45,11 +45,11 @@ function PanelUtil:OpenPanel(ctrl,module,fun,close,forever,...)
 		end
 		
 		panelMgr:CreatePanel(module,tempFun,nil);
-		logWarn(this.curIndex.."创建Panel---------------------------->"..module);
+		-- logWarn(this.curIndex.."创建Panel---------------------------->"..module);
 end
 
 function PanelUtil:PutViewStack(index,ogo)
-	logWarn("============================"..index);
+	-- logWarn("============================"..index);
 	local old = self.viewStack[index];
 	if(old and old.name~=ogo.name) then--判断原位置是否为空，并且是否跟当前Panel重复
 		panelMgr:ClosePanel(old.name);
@@ -72,10 +72,10 @@ function PanelUtil:GetCurIndex()
 end
 
 function PanelUtil:FindPanelByName(name)
-	logWarn("1111111111111111"..name);
+	-- logWarn("1111111111111111"..name);
 	for i=1,#self.viewStack do 
 		if self.viewStack[i] ~= nil then 
-			logWarn("22222222222222222"..self.viewStack[i].name);
+			-- logWarn("22222222222222222"..self.viewStack[i].name);
 			if(self.viewStack[i].name==name) then
 				return i;
 			end
@@ -93,5 +93,8 @@ function PanelUtil:OpenModule(ctrlName,...)
         logWarn("创建Ctrl---------------------------->"..ctrlName);
     end
 end
+-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-
+function PanelUtil:CreatePrefab(abName,fun,...)
+	resMgr:LoadPrefab(abName, {...}, fun);
+end

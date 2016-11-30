@@ -17,9 +17,6 @@ function ModuleClass:new(super)
       if obj.__new then  
            obj:__new(...)  
       end
-      -- obj.Hide = function ()
-      --   logWarn("隐藏该Panel----->"..self.name);
-      -- end
       return obj  
   end
   function class:Hide()

@@ -40,6 +40,9 @@ LuaHelper = LuaFramework.LuaHelper;
 ByteBuffer = LuaFramework.ByteBuffer;
 Input = UnityEngine.Input;
 EventSystem = UnityEngine.EventSystems.EventSystem;
+Camera = UnityEngine.Camera;
+Space = UnityEngine.Space;
+SystemType = System.Type;
 
 resMgr = LuaHelper.GetResManager();
 panelMgr = LuaHelper.GetPanelManager();

@@ -90,6 +90,8 @@ public static class CustomSettings
         _GT(typeof(Application)),
         _GT(typeof(Physics)),
         _GT(typeof(Collider)),
+        _GT(typeof(Collider2D)),
+        
         _GT(typeof(Time)),        
         _GT(typeof(Texture)),
         _GT(typeof(Texture2D)),
@@ -152,7 +154,11 @@ public static class CustomSettings
         _GT(typeof(TimerManager)),
         _GT(typeof(ThreadManager)),
         _GT(typeof(NetworkManager)),
-        _GT(typeof(ResourceManager)),		  
+        _GT(typeof(ResourceManager)),
+
+
+        _GT(typeof(TriggerScript)),
+        
     };
 
     public static List<Type> dynamicList = new List<Type>()

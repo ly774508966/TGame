@@ -17,8 +17,7 @@ end
 
 function MainCtrl.Awake()
 	logWarn("MainCtrl.Awake--->>");
-	PanelUtil:OpenPanel(this,"Main",this.OnCreate,false,false,"tim",123);
-	this.curDestoryCount =0;
+	PanelUtil:OpenPanel(this,ModuleNames.Main,this.OnCreate,false,false,"tim",123);
 end
 
 
@@ -46,9 +45,10 @@ function MainCtrl.OnCreate(obj,arg)
 		logWarn("点击事件触发了~~~"..args[1]); 
 		PanelUtil:OpenModule(CtrlNames.Room,args[1]);
 	end
-	UnityMonoUtil:AddOnClick(lb,MainPanel.btn_bh,fun,"aa");
-	UnityMonoUtil:AddOnClick(lb,MainPanel.btn_bhd,fun,"bb");
+	UnityMonoUtil.AddOnClick(lb,MainPanel.btn_bh,fun,"aa");
+	UnityMonoUtil.AddOnClick(lb,MainPanel.btn_bhd,fun,"bb");
 	UpdateBeat:Add(this.Update,this);
+	logWarn("测试Panel的GameObject--------->"..type(MainPanel.gameObject));
 	logWarn("Start lua--->>"..gameObject.name);
 end
 
