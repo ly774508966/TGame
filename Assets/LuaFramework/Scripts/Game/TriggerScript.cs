@@ -6,6 +6,7 @@ public class TriggerScript : MonoBehaviour
 
     public LuaFunction LuaOnTriggerEnter;
 
+
     public LuaFunction LuaOnTriggerExit;
 
     public LuaFunction LuaOnTriggerStay;

@@ -1,8 +1,10 @@
 require "Common/define"
 -- require "Controller/PromptCtrl"
 -- require "Controller/MessageCtrl"
-require "Controller/MainCtrl"
-require "Controller/RoomCtrl"
+-- require "Controller/MainCtrl"
+-- require "Controller/RoomCtrl"
+-- require "Controller/FancyCtrl"
+
 CtrlManager = {};
 local this = CtrlManager;
 local ctrlList = {};	--控制器列表--
@@ -13,6 +15,7 @@ function CtrlManager.Init()
 	-- ctrlList[CtrlNames.Message] = MessageCtrl.New();
 	ctrlList[CtrlNames.Main] = MainCtrl.New();
 	ctrlList[CtrlNames.Room] = RoomCtrl.New();
+	ctrlList[CtrlNames.Fancy] = FancyCtrl.New();
 	return this;
 end
 

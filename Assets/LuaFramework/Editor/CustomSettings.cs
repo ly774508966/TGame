@@ -82,6 +82,7 @@ public static class CustomSettings
         //_GT(typeof(LineRenderer))
         //_GT(typeof(TrailRenderer))
 #endif   
+
                         
         _GT(typeof(Behaviour)),
         _GT(typeof(MonoBehaviour)),        
@@ -91,6 +92,7 @@ public static class CustomSettings
         _GT(typeof(Physics)),
         _GT(typeof(Collider)),
         _GT(typeof(Collider2D)),
+        _GT(typeof(Canvas)),
         
         _GT(typeof(Time)),        
         _GT(typeof(Texture)),
@@ -158,7 +160,8 @@ public static class CustomSettings
 
 
         _GT(typeof(TriggerScript)),
-        
+        _GT(typeof(MoveBehaviourScript)),
+        _GT(typeof(CaptureBehaviourScript)),
     };
 
     public static List<Type> dynamicList = new List<Type>()

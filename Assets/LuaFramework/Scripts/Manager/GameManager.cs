@@ -120,7 +120,9 @@ namespace LuaFramework {
             string url = AppConst.WebUrl;
             string message = string.Empty;
             string random = DateTime.Now.ToString("yyyymmddhhmmss");
-            string listUrl = url + "files.txt?v=" + random;
+            //string listUrl = url + "files.txt?v=" + random;
+            string listUrl = url + "files.txt";
+
             Debug.LogWarning("LoadUpdate---->>>" + listUrl);
 
             WWW www = new WWW(listUrl); yield return www;
@@ -144,7 +146,8 @@ namespace LuaFramework {
                 if (!Directory.Exists(path)) {
                     Directory.CreateDirectory(path);
                 }
-                string fileUrl = url + f + "?v=" + random;
+                //string fileUrl = url + f + "?v=" + random;
+                string fileUrl = url + f;
                 bool canUpdate = !File.Exists(localfile);
                 if (!canUpdate) {
                     string remoteMd5 = keyValue[1].Trim();

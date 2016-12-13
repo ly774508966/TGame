@@ -1,13 +1,16 @@
 ManifestFileVersion: 0
-CRC: 3581291309
+CRC: 646513575
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: main.unity3d
+      Name: fancy.unity3d
       Dependencies: {}
     Info_1:
-      Name: module.unity3d
+      Name: main.unity3d
       Dependencies: {}
     Info_2:
+      Name: module.unity3d
+      Dependencies: {}
+    Info_3:
       Name: room.unity3d
       Dependencies: {}

@@ -49,6 +49,18 @@ function findPanel(str)
 	return obj:GetComponent("BaseLua");
 end
 
+function split(str, delimiter)
+  if str==nil or str=='' or delimiter==nil then
+    return nil
+  end
+  
+    local result = {}
+    for match in (str..delimiter):gmatch("(.-)"..delimiter) do
+        table.insert(result, match)
+    end
+    return result
+end
+
 function PrintTable( tbl , level, filteDefault,str)
   local msg = ""
   filteDefault = filteDefault or true --默认过滤关键字（DeleteMe, _class_type）

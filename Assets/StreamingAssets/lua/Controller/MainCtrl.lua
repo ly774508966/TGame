@@ -17,7 +17,7 @@ end
 
 function MainCtrl.Awake()
 	logWarn("MainCtrl.Awake--->>");
-	PanelUtil:OpenPanel(this,ModuleNames.Main,this.OnCreate,false,false,"tim",123);
+	PanelUtil:OpenPanel(this,ModuleNames.Main,this.OnCreate,false,false,"Namidairo",123);
 end
 
 

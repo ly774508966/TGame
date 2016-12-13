@@ -98,3 +98,10 @@ end
 function PanelUtil:CreatePrefab(abName,fun,...)
 	resMgr:LoadPrefab(abName, {...}, fun);
 end
+
+function PanelUtil.updateSize(rtf,x,y)
+	x = -x - rtf.offsetMin.x + rtf.offsetMax.x;
+    y = -y - rtf.offsetMin.y + rtf.offsetMax.y;
+    rtf.offsetMin = Vector2.New( rtf.offsetMin.x + rtf.pivot.x * x, rtf.offsetMin.y + rtf.pivot.y * y);
+    rtf.offsetMax = Vector2.New( -(-rtf.offsetMax.x + (1-rtf.pivot.x) * x),-(-rtf.offsetMax.y + (1-rtf.pivot.y) * y));
+end

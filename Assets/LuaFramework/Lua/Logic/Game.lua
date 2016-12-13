@@ -39,6 +39,12 @@ function Game.InitUtils()
     end
 end
 
+function Game.InitCtrl()
+    for k,v in pairs(CtrlNames) do
+        require ("Controller/"..tostring(v))
+    end
+end
+
 
 --初始化完成，发送链接服务器信息--
 function Game.OnInitOK()
@@ -48,6 +54,7 @@ function Game.OnInitOK()
         --注册LuaView--
     this.InitViewPanels();
     this.InitUtils();
+    this.InitCtrl();
     NetworkLuaUtil.initProto();
     -- NetworkLuaUtil.RegisterProtoPB("Default");
     -- NetworkLuaUtil.RegisterProtoPB("Mo");
@@ -75,7 +82,7 @@ function Game.OnInitOK()
     -- coroutine.start(this.test_coroutine);
 
     CtrlManager.Init();
-    PanelUtil:OpenModule(CtrlNames.Main);
+    PanelUtil:OpenModule(CtrlNames.Fancy,"sun");
     -- local ctrl = CtrlManager.GetCtrl(CtrlNames.Main);
     -- if ctrl ~= nil and AppConst.ExampleMode == 1 then
     -- if ctrl ~= nil then

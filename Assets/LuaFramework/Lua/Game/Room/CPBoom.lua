@@ -1,7 +1,10 @@
 CPBoom = Class:new(nil);
 local speed = 50;
+local tags = 1;
 function CPBoom:__new(go,target,parent)
 	self.gameobject = go;
+	tags = tags + 1;
+	self.gameobject.name = self.gameobject.name.."_"..tags;
 	self.target = parent.transform:InverseTransformPoint(target)*1173;
 	-- self.target = target;
 	self.gameobject.transform:SetParent(parent.transform);
@@ -19,6 +22,7 @@ function CPBoom:__new(go,target,parent)
 	-- self.gameobject.transform.localPosition.z =0;
 	FixedUpdateBeat:Add(self.Update,self);
 	-- UnityMonoUtil:Destroy(self.gameobject,3);
+	return self;
 end
 
 
@@ -29,4 +33,9 @@ function CPBoom:Update()
     -- logWarn(self.gameobject.transform.position.x..","..self.gameobject.transform.position.y);
     -- self.gameobject.transform.localPosition = 
     -- self.gameobject.transform.localPosition = Vector3.Slerp(self.gameobject.transform.localPosition, self.target, step);
+end
+
+function CPBoom:Destroy()
+	FixedUpdateBeat:Remove(self.Update,self);
+	UnityMonoUtil.Destroy(self.gameobject); 
 end

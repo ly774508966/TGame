@@ -3,7 +3,8 @@ CtrlNames = {
 	-- Prompt = "PromptCtrl",
 	-- Message = "MessageCtrl",
 	Main = "MainCtrl",
-	Room = "RoomCtrl"
+	Room = "RoomCtrl",
+	Fancy = "FancyCtrl",
 }
 
 PanelNames = {
@@ -11,6 +12,7 @@ PanelNames = {
 	-- "MessagePanel",
 	"MainPanel",
 	"RoomPanel",
+	"FancyPanel",
 }
 
 UtilNames = {
@@ -21,7 +23,8 @@ UtilNames = {
 
 ModuleNames = {
 	Main = "Main",
-	Room = "Room"
+	Room = "Room",
+	Fancy = "Fancy",
 }
 
 --协议类型--
@@ -43,6 +46,7 @@ EventSystem = UnityEngine.EventSystems.EventSystem;
 Camera = UnityEngine.Camera;
 Space = UnityEngine.Space;
 SystemType = System.Type;
+
 
 resMgr = LuaHelper.GetResManager();
 panelMgr = LuaHelper.GetPanelManager();

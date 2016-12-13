@@ -29,7 +29,7 @@ namespace LuaFramework {
             Transform tf = Parent.FindChild(assetName);
             if (tf != null && func != null)
             {
-                func.Call(tf.gameObject);
+                func.Call(tf.gameObject, table);
                 return;
             }
 
@@ -48,7 +48,7 @@ namespace LuaFramework {
                 go.transform.localPosition = Vector3.zero;
                 go.AddComponent<LuaBehaviour>();
                 go.SetActive(false);
-                if (func != null) func.Call(go);
+                if (func != null) func.Call(go, table);
                 Debug.LogWarning("CreatePanel::>> " + name + " " + prefab);
             });
 #else
